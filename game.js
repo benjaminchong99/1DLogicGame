@@ -93,5 +93,3 @@ function reset() {
         box(i)
     }
 }
-
-affect(8)
