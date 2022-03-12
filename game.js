@@ -2,6 +2,10 @@ console.log("hello world!");
 
 table = [0,0,0,0,0,0,0,0,0];
 namels = ["bl","bc","br","cl","cc","cr","tl","tc","tr"]
+testcases[
+    [1,0,1,0,1,0,1,0,1],
+    [1,1,1,1,1,1,1,1,1]
+]
 
 function box(boxtype){
     temp = table[boxtype]
@@ -84,6 +88,8 @@ function affect(inp){
     for (i=0; i<blocks.length; i++){
         box(blocks[i])
     }
+    document.getElementById("record").innerHTML += inp + ", ";
+
 }
 
 
@@ -91,12 +97,14 @@ function reset() {
     table = [1,1,1,1,1,1,1,1,1]
     for (i=0; i<table.length; i++){
         box(i)
+    document.getElementById("record").innerHTML = "";
     }
 }
 
 function countdown(n) {
     var counter = document.getElementById("counter");
     var seconds = n;
+    document.getElementById('timer').style.visibility = 'hidden';
     function tick() {
         seconds--;
         counter.innerHTML = String(seconds) + (" s");
@@ -113,6 +121,8 @@ function stopTimer() {
     clearTimeout(timerid);
     document.getElementById("counter").innerHTML = "Timer Stopped"
     delay(1000).then(() => document.getElementById("counter").innerHTML = "Timer")   
+    document.getElementById('timer').style.visibility = 'visible';
+
 }
 
 function delay(time) {
