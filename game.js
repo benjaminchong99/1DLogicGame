@@ -93,3 +93,28 @@ function reset() {
         box(i)
     }
 }
+
+function countdown(n) {
+    var counter = document.getElementById("counter");
+    var seconds = n;
+    function tick() {
+        seconds--;
+        counter.innerHTML = String(seconds) + (" s");
+        if (seconds > 0) {
+            timerid = setTimeout(tick, 1000);
+        } else {
+            document.getElementById("counter").innerHTML = "TIMES UP!!!";
+        }
+    }
+    tick();
+}
+
+function stopTimer() {
+    clearTimeout(timerid);
+    document.getElementById("counter").innerHTML = "Timer Stopped"
+    delay(1000).then(() => document.getElementById("counter").innerHTML = "Timer")   
+}
+
+function delay(time) {
+    return new Promise(resolve => setTimeout(resolve, time));
+  }
