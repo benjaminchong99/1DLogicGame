@@ -26,6 +26,7 @@ td {
   font-size: 40px;
 }
 
-#counter {
+#counter,
+#score {
   border: 3px solid black;
 }

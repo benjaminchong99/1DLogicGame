@@ -1,10 +1,18 @@
 console.log("hello world!");
 
+score = 0
 table = [0,0,0,0,0,0,0,0,0];
 namels = ["bl","bc","br","cl","cc","cr","tl","tc","tr"]
-testcases[
+game = []
+refcheck = []
+testcases = [
     [1,0,1,0,1,0,1,0,1],
-    [1,1,1,1,1,1,1,1,1]
+    [1,1,1,1,1,1,1,1,1],
+    [1,1,1,0,1,0,0,1,0],
+    [1,0,0,1,1,1,0,0,1],
+    [0,1,0,1,1,1,0,1,0],
+    [1,0,1,1,1,1,1,0,1],
+    [1,0,0,0,0,0,0,0,1]
 ]
 
 function box(boxtype){
@@ -23,6 +31,7 @@ function box(boxtype){
         // turn white
     }
     console.log(table)
+    refcheck = table
 }
 
 function check(inp){
@@ -89,7 +98,8 @@ function affect(inp){
         box(blocks[i])
     }
     document.getElementById("record").innerHTML += inp + ", ";
-
+    console.log("game: "+game)
+    activecheck()
 }
 
 
@@ -104,6 +114,7 @@ function reset() {
 function countdown(n) {
     var counter = document.getElementById("counter");
     var seconds = n;
+    referencebox()
     document.getElementById('timer').style.visibility = 'hidden';
     function tick() {
         seconds--;
@@ -122,9 +133,42 @@ function stopTimer() {
     document.getElementById("counter").innerHTML = "Timer Stopped"
     delay(1000).then(() => document.getElementById("counter").innerHTML = "Timer")   
     document.getElementById('timer').style.visibility = 'visible';
+    score = 0
+    document.getElementById('score').innerHTML = "Score: " + score
 
 }
 
 function delay(time) {
     return new Promise(resolve => setTimeout(resolve, time));
   }
+
+function referencebox(){
+    game = testcases[Math.floor(testcases.length * Math.random())] // select one pattern randomly
+    testcases.pop(game)
+    for (i = 0; i < game.length; i++){
+        if (game[i] == 1){
+            // turn black
+            refno = "r"+ String(i)
+            document.getElementById(refno).style.backgroundColor = 'black';
+        }else{
+            //turn white
+            refno = "r"+ String(i)
+            document.getElementById(refno).style.backgroundColor = 'white'
+        }
+    }
+}
+
+function activecheck(){
+    indic = true;
+    for (j=0; j<refcheck.length; j++){
+        if (refcheck[j] != game[j]){
+            indic = false;
+        }
+    }
+    if (indic == true){
+        referencebox()
+        score +=1
+        document.getElementById("score").innerHTML = "Score: "+score
+    }
+}
+    
