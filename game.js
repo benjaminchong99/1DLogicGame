@@ -155,6 +155,7 @@ function delay(time) {
 
 function referencebox(){
     game = testcases[Math.floor(testcases.length * Math.random())] // select one pattern randomly
+    game = randomisepos(game)
     norepeat = true;
     for (j=0; j<refcheck.length; j++){
         if (refcheck[j] != game[j]){
@@ -190,4 +191,23 @@ function activecheck(){
         score +=1
         document.getElementById("score").innerHTML = "Score: "+score
     }
+}
+
+function randomisepos(instruction){
+    // for i in range list, list[i] = newlist[i+sth], return list=newlist
+    outer = [0,6,8,2]
+    inner = [1,3,7,5]
+    newlist = [0,0,0,0,0,0,0,0,0]
+    choice = Math.floor(Math.random() * 3);
+    for(i=0; i<outer.length; i++) {
+        input_o = outer[i]
+        input_i = inner[i]
+        output_o = outer[(i+choice)%4]
+        output_i = inner[(i+choice)%4]
+        newlist[output_o] = instruction[input_o]
+        newlist[output_i] = instruction[input_i]
+    }
+    newlist[4] = instruction[4]
+    return newlist
+
 }
