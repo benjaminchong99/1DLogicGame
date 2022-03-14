@@ -12,8 +12,14 @@ testcases = [
     [1,0,0,1,1,1,0,0,1],
     [0,1,0,1,1,1,0,1,0],
     [1,0,1,1,1,1,1,0,1],
-    [1,0,0,0,0,0,0,0,1]
+    [1,0,0,0,0,0,0,0,1],
+    [1,0,0,0,1,0,0,0,1],
+    [0,0,0,1,1,0,1,0,0],
+    [1,1,1,0,0,0,0,0,0],
+    [1,0,0,0,0,0,0,0,0]
 ]
+// to randomise even more, add a function that turns it 90deg, 180deg or 270deg
+// can store the test cases somewhere else, then import in.
 
 function box(boxtype){
     temp = table[boxtype]
@@ -99,7 +105,12 @@ function affect(inp){
     }
     document.getElementById("record").innerHTML += inp + ", ";
     console.log("game: "+game)
-    activecheck()
+    if (document.getElementById("counter").innerHTML == "TIMES UP!!!" || document.getElementById("counter").innerHTML == "Timer"){
+        currentscore = score
+        document.getElementById("score").innerHTML = "Score: "+currentscore
+    }else{
+        activecheck()
+    }
 }
 
 
@@ -144,16 +155,25 @@ function delay(time) {
 
 function referencebox(){
     game = testcases[Math.floor(testcases.length * Math.random())] // select one pattern randomly
-    testcases.pop(game)
-    for (i = 0; i < game.length; i++){
-        if (game[i] == 1){
-            // turn black
-            refno = "r"+ String(i)
-            document.getElementById(refno).style.backgroundColor = 'black';
-        }else{
-            //turn white
-            refno = "r"+ String(i)
-            document.getElementById(refno).style.backgroundColor = 'white'
+    norepeat = true;
+    for (j=0; j<refcheck.length; j++){
+        if (refcheck[j] != game[j]){
+            norepeat = false;
+        }
+    }
+    if (norepeat == true){
+        referencebox()
+    } else{
+        for (i = 0; i < game.length; i++){
+            if (game[i] == 1){
+                // turn black
+                refno = "r"+ String(i)
+                document.getElementById(refno).style.backgroundColor = 'black';
+            }else{
+                //turn white
+                refno = "r"+ String(i)
+                document.getElementById(refno).style.backgroundColor = 'white'
+            }
         }
     }
 }
@@ -171,4 +191,3 @@ function activecheck(){
         document.getElementById("score").innerHTML = "Score: "+score
     }
 }
-    
