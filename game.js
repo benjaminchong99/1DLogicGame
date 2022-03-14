@@ -16,8 +16,8 @@ testcases = [
     [1,0,0,0,1,0,0,0,1],
     [0,0,0,1,1,0,1,0,0],
     [1,1,1,0,0,0,0,0,0],
-    [1,0,0,0,0,0,0,0,0]
 ]
+//[1,0,0,0,0,0,0,0,0] -- too hard
 // to randomise even more, add a function that turns it 90deg, 180deg or 270deg
 // can store the test cases somewhere else, then import in.
 
