@@ -2,9 +2,16 @@
   display: flex;
 }
 
-.child2 {
+.child1 {
   font-size: 35px;
-  margin-left: 100px;
+  margin-left: 50px;
+  margin: 0 auto;
+}
+
+.userselect {
+  background: transparent;
+  font-weight: bold;
+  color: grey;
 }
 
 button {
@@ -20,13 +27,61 @@ td {
 }
 
 .child3 {
-  flex-wrap: wrap;
-
-  margin-left: 40px;
+  align-items: right;
+  /* margin-left: 40px; */
   font-size: 40px;
+}
+
+#record {
+  width: 350px;
 }
 
 #counter,
 #score {
   border: 3px solid black;
+  margin-bottom: 20px;
+}
+
+#clear:hover {
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  background-color: black;
+  color: white;
+}
+
+#pass:hover {
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  background-color: black;
+  color: white;
+}
+
+#clear,
+#pass {
+  margin-top: 20px;
+  width: 100%;
+  background-color: white;
+  font-weight: bold;
+  color: black;
+  border: 10px solid grey;
+}
+
+#stoptimer:hover {
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  background-color: red;
+}
+
+#timer:hover {
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+  background-color: yellow;
+}
+
+#timer,
+#stoptimer {
+  background-color: white;
+  font-weight: bold;
+  color: black;
+  border: 10px solid grey;
 }

@@ -7,46 +7,10 @@
     <script src="game.js" defer></script>
     <link rel="stylesheet" href="game.css">
 
-    <title>Document</title>
+    <title>STOP THE 3X3PLOSION</title>
 </head>
 <body>
   <div class="parent">
-    <div class="child1">
-      <table id="input">
-        <tr>
-          <td id="tl">
-            <button onclick=affect(6)>6</button>
-          </td>
-          <td id="tc">
-            <button onclick=affect(7)>7</button>
-          </td>
-          <td  id="tr">
-            <button onclick=affect(8)>8</button>
-          </td>
-        </tr><tr>
-          <td id="cl">
-            <button onclick=affect(3)>3</button>
-          </td>
-          <td id="cc">
-            <button onclick=affect(4)>4</button>
-          </td>
-          <td id="cr">
-            <button onclick=affect(5)>5</button>
-          </td>
-        </tr><tr>
-          <td id="bl">
-            <button onclick=affect(0)>0</button>
-          </td>
-          <td id="bc">
-            <button onclick=affect(1)>1</button>
-          </td>
-          <td id="br">
-            <button onclick=affect(2)>2</button>
-          </td>
-        </tr>
-      </table>
-      <button onclick=reset()>reset</button>
-    </div>
     <div class="child2">
       <table id="reference">
         <tr>
@@ -69,6 +33,43 @@
           <td id="r1">
           </td>
           <td id="r2">
+          </td>
+        </tr>
+      </table>
+      <button id="clear" onclick=reset()>CLEAR</button>
+      <button id="pass" onclick=referencebox()>PASS</button>
+    </div>
+    <div class="child1">
+      <table id="input">
+        <tr>
+          <td id="tl">
+            <button class="userselect" onclick=affect(6)>6</button>
+          </td>
+          <td id="tc">
+            <button class="userselect" onclick=affect(7)>7</button>
+          </td>
+          <td  id="tr">
+            <button class="userselect" onclick=affect(8)>8</button>
+          </td>
+        </tr><tr>
+          <td id="cl">
+            <button class="userselect" onclick=affect(3)>3</button>
+          </td>
+          <td id="cc">
+            <button class="userselect" onclick=affect(4)>4</button>
+          </td>
+          <td id="cr">
+            <button class="userselect" onclick=affect(5)>5</button>
+          </td>
+        </tr><tr>
+          <td id="bl">
+            <button class="userselect" onclick=affect(0)>0</button>
+          </td>
+          <td id="bc">
+            <button class="userselect"  onclick=affect(1)>1</button>
+          </td>
+          <td id="br">
+            <button class="userselect" onclick=affect(2)>2</button>
           </td>
         </tr>
       </table>

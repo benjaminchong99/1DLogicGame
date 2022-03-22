@@ -16,12 +16,17 @@ testcases = [
     [1,0,0,0,1,0,0,0,1],
     [0,0,0,1,1,0,1,0,0],
     [1,1,1,0,0,0,0,0,0],
+    [1,1,0,1,0,0,0,0,0]
 ]
+// 10 sets of different patterns
+
 //[1,0,0,0,0,0,0,0,0] -- too hard
+//[0,0,0,1,1,0,1,0,0] -- hard. add after a certain score?
 // to randomise even more, add a function that turns it 90deg, 180deg or 270deg
 // can store the test cases somewhere else, then import in.
 
 function box(boxtype){
+    // change the player's grid colours
     temp = table[boxtype]
     boxname = namels[boxtype]
 
@@ -41,6 +46,7 @@ function box(boxtype){
 }
 
 function check(inp){
+    // algorithm to check which square blocks are affected when one is pushed
     blocks = [inp]
     if (inp%3 ==0){
         // up down left right
@@ -99,6 +105,7 @@ function check(inp){
 }
 
 function affect(inp){
+    // calls check and box functions, then activecheck, executed when button is pressed
     blocks = check(inp)
     for (i=0; i<blocks.length; i++){
         box(blocks[i])
@@ -115,6 +122,7 @@ function affect(inp){
 
 
 function reset() {
+    // clear player's grid 
     table = [1,1,1,1,1,1,1,1,1]
     for (i=0; i<table.length; i++){
         box(i)
@@ -123,6 +131,7 @@ function reset() {
 }
 
 function countdown(n) {
+    // timer, countdown from 90 secs
     var counter = document.getElementById("counter");
     var seconds = n;
     referencebox()
@@ -140,6 +149,7 @@ function countdown(n) {
 }
 
 function stopTimer() {
+    // stop the timer
     clearTimeout(timerid);
     document.getElementById("counter").innerHTML = "Timer Stopped"
     delay(1000).then(() => document.getElementById("counter").innerHTML = "Timer")   
@@ -150,10 +160,12 @@ function stopTimer() {
 }
 
 function delay(time) {
+    // transition added from "time's up" to "timer" 
     return new Promise(resolve => setTimeout(resolve, time));
   }
 
 function referencebox(){
+    // randomise pattern for the game. Shown in the reference grid
     game = testcases[Math.floor(testcases.length * Math.random())] // select one pattern randomly
     game = randomisepos(game)
     norepeat = true;
@@ -180,6 +192,7 @@ function referencebox(){
 }
 
 function activecheck(){
+    // actively checks if player has completed the pattern. if so, add one point to score and randomise another pattern
     indic = true;
     for (j=0; j<refcheck.length; j++){
         if (refcheck[j] != game[j]){
@@ -194,6 +207,7 @@ function activecheck(){
 }
 
 function randomisepos(instruction){
+    // javascript's way of randomising
     // for i in range list, list[i] = newlist[i+sth], return list=newlist
     outer = [0,6,8,2]
     inner = [1,3,7,5]
@@ -211,3 +225,15 @@ function randomisepos(instruction){
     return newlist
 
 }
+
+// function insert_difficult_patterns(){
+//     if (score >= 5){
+//         // append medium level inside
+//     }
+
+
+//     if (score >=10){
+//         //append hard level inside
+
+//     }
+// }
